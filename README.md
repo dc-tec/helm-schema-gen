@@ -17,6 +17,8 @@ Nothing fancy about the code, all the heavy lifting is done by:
 - [cobra](https://github.com/spf13/cobra) - for CLI stuff
 - [The Go stdlib](https://golang.org/pkg/) - for everything else
 
+The plugin uses a custom installer script that downloads the appropriate release from GitHub.
+
 ## Install
 
 The plugin works with both Helm v2 and v3 versions as it's agnostic to the Helm

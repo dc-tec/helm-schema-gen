@@ -1,14 +1,12 @@
-# helm schema gen plugin [ CURRENTLY NOT MAINTAINED ]
+# helm schema gen plugin
 
-![](https://github.com/karuppiah7890/helm-schema-gen/workflows/goreleaser/badge.svg)
+![](https://github.com/dc-tec/helm-schema-gen/workflows/goreleaser/badge.svg)
 
 So that you don't have to write values.schema.json by hand from scratch for your Helm 3 charts
 
 [Helm](https://helm.sh) plugin to generate [JSON Schema for values yaml](https://helm.sh/docs/topics/charts/#schema-files)
 
-## Note about maintenance
-
-I currently don't have the bandwidth to reply to issues, write code and review PRs. For now I recommend forking the repo and making changes and using the fork 😅
+This is a fork of [karuppiah7890/helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) with support for arm64.
 
 ## Code stuff
 
@@ -19,17 +17,16 @@ Nothing fancy about the code, all the heavy lifting is done by:
 - [cobra](https://github.com/spf13/cobra) - for CLI stuff
 - [The Go stdlib](https://golang.org/pkg/) - for everything else
 
-
 ## Install
 
 The plugin works with both Helm v2 and v3 versions as it's agnostic to the Helm
 binary version
 
 ```
-$ helm plugin install https://github.com/karuppiah7890/helm-schema-gen.git
-karuppiah7890/helm-schema-gen info checking GitHub for tag '0.0.4'
-karuppiah7890/helm-schema-gen info found version: 0.0.4 for 0.0.4/Darwin/x86_64
-karuppiah7890/helm-schema-gen info installed ./bin/helm-schema-gen
+$ helm plugin install https://github.com/dc-tec/helm-schema-gen.git
+dc-tec/helm-schema-gen info checking GitHub for tag '0.0.1'
+dc-tec/helm-schema-gen info found version: 0.0.1 for 0.0.1/Darwin/arm64
+dc-tec/helm-schema-gen info installed ./bin/helm-schema-gen
 Installed plugin: schema-gen
 ```
 
@@ -222,9 +219,7 @@ $ helm schema-gen values.yaml > values.schema.json
 
 ## Issues? Feature Requests? Proposals? Feedback?
 
-Note: I currently don't have the bandwidth to reply to issues, write code and review PRs. For now I recommend forking the repo and making changes and using the fork 😅
-
-Put them all in [GitHub issues](https://github.com/karuppiah7890/helm-schema-gen/issues) 😁
+Put them all in [GitHub issues](https://github.com/dc-tec/helm-schema-gen/issues) 😁
 I value every feedback. I really want to make sure that my tools help people and does not
 annoy people. I want my tools to enable people and not hinder them. I'll do my best to help you
 if you face any hindrance because of using my tools! :)

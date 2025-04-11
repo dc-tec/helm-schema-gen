@@ -9,6 +9,9 @@ jobs:
   release:
     name: Semantic Release
     runs-on: ubuntu-latest
+    outputs:
+      new_release_published: ${{ steps.semantic.outputs.new_release_published }}
+      new_release_version: ${{ steps.semantic.outputs.new_release_version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -36,6 +39,16 @@ jobs:
           chmod +x /usr/local/bin/yq
 
       - name: Semantic Release
+        id: semantic
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: semantic-release 
+        run: semantic-release
+        
+      - name: Trigger GoReleaser workflow
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: |
+          curl -XPOST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type": "goreleaser", "client_payload": {"version": "${{ steps.semantic.outputs.new_release_version }}"}}' 

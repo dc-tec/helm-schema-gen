@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.2...v1.1.3) (2025-04-11)
+
+
+### Bug Fixes
+
+* Split workflows ([#8](https://github.com/dc-tec/helm-schema-gen/issues/8)) ([59591c6](https://github.com/dc-tec/helm-schema-gen/commit/59591c6f578b99ae46aaf20bff9a99c9ccca3f71))
+
 ## [1.1.2](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.1...v1.1.2) (2025-04-11)
 
 

@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.1...v1.1.2) (2025-04-11)
+
+
+### Bug Fixes
+
+* Fetch tags ([#7](https://github.com/dc-tec/helm-schema-gen/issues/7)) ([0d41ac6](https://github.com/dc-tec/helm-schema-gen/commit/0d41ac6cf1f69cda7f70ca07cd5d20e82abe4b71))
+
 ## [1.1.1](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.0...v1.1.1) (2025-04-11)
 
 

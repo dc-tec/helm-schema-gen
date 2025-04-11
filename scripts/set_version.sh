@@ -8,9 +8,10 @@
 VERSION=${1:-"v1.1.5"}
 
 # If VERSION doesn't start with 'v', add it
-if [ "${VERSION:0:1}" != "v" ]; then
-  VERSION="v$VERSION"
-fi
+case "$VERSION" in
+  v*) ;;
+  *) VERSION="v$VERSION" ;;
+esac
 
 # Update plugin.yaml version
 if command -v yq >/dev/null 2>&1; then

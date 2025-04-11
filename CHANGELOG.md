@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/dc-tec/helm-schema-gen/compare/v1.0.0...v1.1.0) (2025-04-11)
+
+
+### Features
+
+* Update install script and change release pipeline ([#5](https://github.com/dc-tec/helm-schema-gen/issues/5)) ([e72a25b](https://github.com/dc-tec/helm-schema-gen/commit/e72a25b61bce12719e7f65ea0f828b673fa8d901))
+
 # 1.0.0 (2025-04-11)
 
 

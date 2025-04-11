@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.0...v1.1.1) (2025-04-11)
+
+
+### Bug Fixes
+
+* Goreleaser release command ([#6](https://github.com/dc-tec/helm-schema-gen/issues/6)) ([c992825](https://github.com/dc-tec/helm-schema-gen/commit/c992825fc15796b0be77899a3cc3aa0d180efd9e))
+
 # [1.1.0](https://github.com/dc-tec/helm-schema-gen/compare/v1.0.0...v1.1.0) (2025-04-11)
 
 

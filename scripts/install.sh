@@ -6,8 +6,11 @@ set -e
 
 GITHUB_REPO="dc-tec/helm-schema-gen"
 PROJECT_NAME="helm-schema-gen"
-BINDIR=${BINDIR:-./bin}
+BINDIR=${BINDIR:-"$(pwd)/bin"}
 TAG=$1
+
+# Create bin directory if it doesn't exist
+mkdir -p "$BINDIR"
 
 # Log functions
 log_info() {

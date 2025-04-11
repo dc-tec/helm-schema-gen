@@ -68,13 +68,32 @@ get_latest_release() {
   repo=$1
   
   if is_command curl; then
-    curl -sSL "https://api.github.com/repos/$repo/releases/latest" | 
+    # Use the -f flag to fail silently on error, and follow redirects with -L
+    latest_tag=$(curl -sSLf "https://api.github.com/repos/$repo/releases/latest" | 
       grep -o '"tag_name": "[^"]*' | 
-      sed 's/"tag_name": "//'
+      sed 's/"tag_name": "//') || return 1
+    
+    # If the GitHub API request fails or returns empty, use a fallback minimum version
+    if [ -z "$latest_tag" ]; then
+      log_info "Failed to get latest release via API, using fallback minimum version v1.1.6"
+      echo "v1.1.6"
+      return 0
+    fi
+    
+    echo "$latest_tag"
   elif is_command wget; then
-    wget -q -O- "https://api.github.com/repos/$repo/releases/latest" |
+    latest_tag=$(wget -q -O- "https://api.github.com/repos/$repo/releases/latest" |
       grep -o '"tag_name": "[^"]*' | 
-      sed 's/"tag_name": "//'
+      sed 's/"tag_name": "//') || return 1
+    
+    # If the GitHub API request fails or returns empty, use a fallback minimum version
+    if [ -z "$latest_tag" ]; then
+      log_info "Failed to get latest release via API, using fallback minimum version v1.1.6"
+      echo "v1.1.6"
+      return 0
+    fi
+    
+    echo "$latest_tag"
   else
     log_err "Neither curl nor wget found. Please install one of them."
     exit 1
@@ -122,8 +141,9 @@ main() {
     log_info "No version specified, fetching latest release..."
     TAG=$(get_latest_release "$GITHUB_REPO")
     if [ -z "$TAG" ]; then
-      log_err "Failed to get latest release."
-      exit 1
+      # If get_latest_release still fails, use a minimum known good version
+      log_err "Failed to get latest release, falling back to v1.1.6"
+      TAG="v1.1.6"
     fi
   fi
   

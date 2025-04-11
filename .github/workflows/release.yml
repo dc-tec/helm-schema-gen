@@ -42,9 +42,8 @@ jobs:
 
   build:
     needs: release
-    name: Build on tag
+    name: Build Release
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Checkout
         uses: actions/checkout@v3

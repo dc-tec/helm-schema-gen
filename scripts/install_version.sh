@@ -5,7 +5,7 @@
 ## 2. Updates the version used in the installation
 
 # Get version from first argument or use default
-VERSION=${1:-"0.0.4"}
+VERSION=${1:-"1.0.0"}
 
 # Update plugin.yaml version
 if command -v yq >/dev/null 2>&1; then

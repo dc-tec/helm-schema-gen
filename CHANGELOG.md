@@ -1,0 +1,13 @@
+# 1.0.0 (2025-04-11)
+
+
+### Bug Fixes
+
+* Change version back to 0.0.4 ([#3](https://github.com/dc-tec/helm-schema-gen/issues/3)) ([668ea76](https://github.com/dc-tec/helm-schema-gen/commit/668ea7649ffb50a6116a634366d98202805b2540))
+* Run workflow on push to main, small fix in version number in plugin.yaml ([#2](https://github.com/dc-tec/helm-schema-gen/issues/2)) ([0d09e0c](https://github.com/dc-tec/helm-schema-gen/commit/0d09e0c881ea57e513b8a6ceb4a8ef82f53690d9))
+
+
+### Features
+
+* Update helm-schema, support arm64, update go modules ([#1](https://github.com/dc-tec/helm-schema-gen/issues/1)) ([4fea26f](https://github.com/dc-tec/helm-schema-gen/commit/4fea26f86cb665cf6beb980139ca8c5f5f19db6b))
+* Update release pipeline ([#4](https://github.com/dc-tec/helm-schema-gen/issues/4)) ([9a809d4](https://github.com/dc-tec/helm-schema-gen/commit/9a809d41e4fbebcea51c97ca0bbfc0eb3e496b62))

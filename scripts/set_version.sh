@@ -5,7 +5,7 @@
 ## 2. Updates the version used in the installation
 
 # Get version from first argument or use default
-VERSION=${1:-"v1.1.6"}
+VERSION=${1:-"v1.1.7"}
 
 # If VERSION doesn't start with 'v', add it
 case "$VERSION" in

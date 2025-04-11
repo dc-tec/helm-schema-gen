@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.6...v1.1.7) (2025-04-11)
+
+
+### Bug Fixes
+
+* Install Script download latest version ([#15](https://github.com/dc-tec/helm-schema-gen/issues/15)) ([a885e4b](https://github.com/dc-tec/helm-schema-gen/commit/a885e4bdca015078c03533900ae73553a02b997b))
+
 ## [1.1.6](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.5...v1.1.6) (2025-04-11)
 
 

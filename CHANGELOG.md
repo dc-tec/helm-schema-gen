@@ -1,3 +1,13 @@
+## [1.1.6](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.5...v1.1.6) (2025-04-11)
+
+
+### Bug Fixes
+
+* Change script name ([#12](https://github.com/dc-tec/helm-schema-gen/issues/12)) ([0b50533](https://github.com/dc-tec/helm-schema-gen/commit/0b50533e9333201afe7ae8c71b487abf9017eb5f))
+* Plugin install script ([#11](https://github.com/dc-tec/helm-schema-gen/issues/11)) ([c2c69b2](https://github.com/dc-tec/helm-schema-gen/commit/c2c69b2d1fa6dbcada183841950999acb96c165c))
+* Set Version Script POSIX compliant ([#14](https://github.com/dc-tec/helm-schema-gen/issues/14)) ([e09093a](https://github.com/dc-tec/helm-schema-gen/commit/e09093a2a2c5f7f90d283a0836bb1fc9ae57ffe4))
+* Substitution error while triggering script ([#13](https://github.com/dc-tec/helm-schema-gen/issues/13)) ([6a3a328](https://github.com/dc-tec/helm-schema-gen/commit/6a3a3282f7fe3a1f0a6cb0ef20475aee7b7dbd9c))
+
 ## [1.1.5](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.4...v1.1.5) (2025-04-11)
 
 

@@ -5,7 +5,7 @@
       "@semantic-release/release-notes-generator",
       "@semantic-release/changelog",
       ["@semantic-release/exec", {
-        "prepareCmd": "./scripts/set_version.sh \\${nextRelease.version}"
+        "prepareCmd": "./scripts/set_version.sh ${nextRelease.version}"
       }],
       ["@semantic-release/git", {
         "assets": ["plugin.yaml", "scripts/set_version.sh", "CHANGELOG.md"],

@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.3...v1.1.4) (2025-04-11)
+
+
+### Bug Fixes
+
+* Trigger GoRelease after Semantic Release workflow ([#9](https://github.com/dc-tec/helm-schema-gen/issues/9)) ([da6d53b](https://github.com/dc-tec/helm-schema-gen/commit/da6d53bf25bd5e3550e9b7c0162ac3898d93f66e))
+
 ## [1.1.3](https://github.com/dc-tec/helm-schema-gen/compare/v1.1.2...v1.1.3) (2025-04-11)
 
 

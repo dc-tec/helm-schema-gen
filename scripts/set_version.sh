@@ -5,7 +5,12 @@
 ## 2. Updates the version used in the installation
 
 # Get version from first argument or use default
-VERSION=${1:-"1.1.0"}
+VERSION=${1:-"v1.1.5"}
+
+# If VERSION doesn't start with 'v', add it
+if [ "${VERSION:0:1}" != "v" ]; then
+  VERSION="v$VERSION"
+fi
 
 # Update plugin.yaml version
 if command -v yq >/dev/null 2>&1; then
@@ -21,16 +26,13 @@ else
   echo "Please update plugin.yaml version to $VERSION manually."
 fi
 
-# Run the installer with the specified version
-./scripts/install.sh "$VERSION"
-
 # Self-update: replace the hardcoded version in this file
 # Get OS for proper sed command
 OS=$(uname)
 if [ "$OS" = "Darwin" ]; then
   # macOS requires an empty string with -i
-  sed -i '' "s/VERSION=\${1:-\"v[0-9]*\.[0-9]*\.[0-9]*\"}/VERSION=\${1:-\"$VERSION\"}/" "$0"
+  sed -i '' "s/VERSION=\${1:-\"[^\"]*\"}/VERSION=\${1:-\"$VERSION\"}/" "$0"
 else
   # Linux version
-  sed -i "s/VERSION=\${1:-\"v[0-9]*\.[0-9]*\.[0-9]*\"}/VERSION=\${1:-\"$VERSION\"}/" "$0"
+  sed -i "s/VERSION=\${1:-\"[^\"]*\"}/VERSION=\${1:-\"$VERSION\"}/" "$0"
 fi

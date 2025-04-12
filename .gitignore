@@ -1,3 +1,9 @@
 .idea
 helm-schema-gen# Added by goreleaser init:
 dist/
+bin/
+.DS_Store
+.vscode
+
+TODO.md
+FUTURE_FEATURES.md

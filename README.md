@@ -1,6 +1,6 @@
 # helm schema gen plugin
 
-![](https://github.com/dc-tec/helm-schema-gen/workflows/goreleaser/badge.svg)
+![](https://github.com/dc-tec/helm-schema-gen/workflows/GoReleaser/badge.svg)
 
 So that you don't have to write values.schema.json by hand from scratch for your Helm 3 charts
 

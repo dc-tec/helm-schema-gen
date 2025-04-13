@@ -219,6 +219,36 @@ You can save it to a file like this
 $ helm schema-gen values.yaml > values.schema.json
 ```
 
+## Development
+
+### Testing
+
+The project has a comprehensive test suite covering all major components. To run the tests, use the Makefile:
+
+```bash
+# Run all tests with verbose output
+make test
+
+# Run tests with coverage report
+make test-coverage
+
+# Run tests for a specific package
+make test-pkg PKG=./pkg/logging
+
+# See all available test options
+make help
+```
+
+Tests are organized by package and follow Go's standard testing conventions. All test files are named with a `_test.go` suffix and are located alongside the code they test.
+
+Key test files include:
+
+- `pkg/logging/logger_test.go` - Tests for logging functionality
+- `pkg/cli/cli_test.go` - Tests for command-line interface
+- `pkg/schema-generator/type_detection_test.go` - Tests for schema type detection
+- `pkg/schema-generator/pattern_mapping_test.go` - Tests for field pattern mapping
+- `pkg/schema-generator/helm_best_practices_test.go` - Tests for Helm best practices validation
+
 ## Issues? Feature Requests? Proposals? Feedback?
 
 Put them all in [GitHub issues](https://github.com/dc-tec/helm-schema-gen/issues) 😁

@@ -67,7 +67,13 @@ func WithOperation(ctx context.Context, operation string) context.Context {
 	return context.WithValue(ctx, operationContextKey, operation)
 }
 
-// LoggerError logs an error message with the specified error.
+// GetOperation retrieves the current operation from the context, if any.
+func GetOperation(ctx context.Context) (string, bool) {
+	op, ok := ctx.Value(operationContextKey).(string)
+	return op, ok
+}
+
+// LogError logs an error message with the specified error.
 func LogError(ctx context.Context, err error, msg string, args ...any) error {
 	logger := GetLogger()
 	logger.ErrorContext(ctx, msg, append(args, ErrorKey, err)...)
@@ -78,18 +84,21 @@ func LogError(ctx context.Context, err error, msg string, args ...any) error {
 func LogOperation[T any](ctx context.Context, operation string, fn func() (T, error)) (T, error) {
 	logger := GetLogger()
 
-	logger.InfoContext(ctx, "starting operation", OperationKey, operation)
+	// Create a new context with operation info
+	opCtx := WithOperation(ctx, operation)
+
+	logger.InfoContext(opCtx, "starting operation", OperationKey, operation)
 
 	result, err := fn()
 	if err != nil {
-		logger.ErrorContext(ctx, "operation failed",
+		logger.ErrorContext(opCtx, "operation failed",
 			OperationKey, operation,
 			ErrorKey, err,
 		)
 		return result, fmt.Errorf("%s: %w", operation, err)
 	}
 
-	logger.InfoContext(ctx, "operation completed",
+	logger.InfoContext(opCtx, "operation completed",
 		OperationKey, operation,
 	)
 	return result, nil

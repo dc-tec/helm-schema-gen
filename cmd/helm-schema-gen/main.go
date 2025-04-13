@@ -30,9 +30,11 @@ func run() error {
 		}
 	}()
 
-	logger := logging.GetLogger()
+	// Initialize the logger and add application component
+	logger := logging.WithComponent(ctx, "application")
 	logger.InfoContext(ctx, "Starting helm-schema-gen")
 
+	// Run the schema generator
 	return tool.GenerateSchema(ctx)
 }
 

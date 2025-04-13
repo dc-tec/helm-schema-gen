@@ -9,14 +9,16 @@ import (
 
 // GenerateSchema runs the schema generation command using the CLI package
 func GenerateSchema(ctx context.Context) error {
-	logger := logging.GetLogger().With("component", "schema-generator")
+	logger := logging.WithComponent(ctx, "schema-generator")
+	ctx = logging.WithOperation(ctx, "generate-schema")
+
 	logger.InfoContext(ctx, "starting schema generation")
 
 	// Delegate to the CLI package for schema generation
 	err := cli.ExecuteCLI()
 	if err != nil {
 		logger.ErrorContext(ctx, "schema generation failed", "error", err)
-		return err
+		return logging.LogError(ctx, err, "schema generation failed")
 	}
 
 	logger.InfoContext(ctx, "schema generation completed successfully")

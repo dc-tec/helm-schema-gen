@@ -14,6 +14,13 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+# Test various naming conventions for schema validation
+conventionTests:
+  camelCase: "correct format"
+  NOT_CAMEL_CASE: "incorrect format - uppercase"
+  with-hyphen: "incorrect format - hyphen"
+  with_underscore: "incorrect format - underscore"
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -22,8 +29,18 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
+  # Test various types of enabled flags for type detection
+  enabled: true
+  secondEnabled: "true" # string that should be treated as boolean
 
 podAnnotations: {}
+# Testing multiple types in annotations
+extraPodAnnotations:
+  key1: "value1"
+  key2: "value2"
+
+# Test null value - often detected incorrectly
+additionalLabels: null
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -36,9 +53,25 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+# Test deep nesting for depth detection
+deeplyNested:
+  level1:
+    level2:
+      level3:
+        level4:
+          level5:
+            level6:
+              property: "test"
+
 service:
   type: ClusterIP
   port: 80
+  # Test containerPort for detection as both string and integer
+  containerPort: 8080
+  # Test variant string values
+  enabled: true
+  otherService:
+    enabled: "false"
 
 ingress:
   enabled: false
@@ -52,18 +85,35 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+  # Test secretName for null/string types
+  secretName: null
+  secondSecret: "my-tls-secret"
 
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+# Test array with mixed types
+mixedArray:
+  - "string value"
+  - 123
+  - true
+  - 3.14
+
+# Test empty arrays for item detection
+emptyArray: []
+
+resources:
+  # Test CPU/memory fields that should support multiple types
+  limits:
+    cpu: "100m"
+    memory: 128
+  requests:
+    cpu: 0.5
+    memory: "256Mi"
+
+# Test variable numeric formats
+numeric:
+  integerValue: 42
+  floatValue: 3.14
+  stringInteger: "100"
+  memoryValue: "512Mi"
 
 autoscaling:
   enabled: false
@@ -72,8 +122,36 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-nodeSelector: {}
+# Test tolerations array
+tolerations:
+  - key: "dedicated"
+    operator: "Equal"
+    value: "test"
+    effect: "NoSchedule"
 
-tolerations: []
+# Test for object/string type support
+config: |
+  key1: value1
+  key2: value2
+
+# Test date formats
+dates:
+  release: "2023-10-15"
+  timestamp: "2023-10-15T14:30:00Z"
+  email: "user@example.com"
+  website: "https://example.com"
+
+# Special formats for testing
+specialFormats:
+  jsonContent: '{"key": "value"}'
+  yamlContent: |
+    foo: bar
+    nested:
+      value: test
+  rawConfig: |-
+    This is raw text
+    that spans multiple lines
+
+nodeSelector: {}
 
 affinity: {}
